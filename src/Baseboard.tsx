@@ -9,8 +9,7 @@ const About = styled.footer`
   color: #000000;
   text-align: center;
   padding: 17px;
-  font-family: 'Montserrat', sans-serif;
-  `;
+`;
 
 const Baseboard: React.FC = () => {
     return (

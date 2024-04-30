@@ -7,7 +7,6 @@ import Baseboard from './Baseboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ShoppingCart from './ShoppingCart';
 import type { Product } from './types';
-import ListCar from './ListCar';
 
 const queryClient = new QueryClient();
 
@@ -44,23 +43,25 @@ const App: React.FC = () => {
   };
 
   // Função para calcular o total com base nos itens do carrinho
-  const calculateTotal = () => {
-    return cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-  };
+  const total = cartItems.reduce((acc, item) => {
+    // Verifica se a quantidade é zero e substitui por 1
+    const quantity = item.quantity === undefined ? 1 : item.quantity;
+    // Adiciona o preço multiplicado pela quantidade ao acumulador
+    return acc + (item.price * quantity);
+  }, 0);
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <Header toggleCart={toggleCart} cartItems={cartItems} />
+        <Header />
         <ShoppingCart isOpen={isCartOpen} 
                       cartItems={cartItems} 
                       toggleCart={toggleCart}  
                       removeFromCart={removeFromCart} 
                       updateCartItemQuantity={updateCartItemQuantity}
-                      total={calculateTotal()}
+                      total={total}
         />
         <ProductList addToCart={addToCart} />
-        {/* <ListCar items={cartItems} removeFromCart={removeFromCart} /> */}
         <Baseboard />
       </div>
     </QueryClientProvider>

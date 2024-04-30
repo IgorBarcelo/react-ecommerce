@@ -10,7 +10,7 @@ interface ShoppingCartProps {
   removeFromCart: (productId: number) => Product[];
   updateCartItemQuantity: (productId: number, quantity: number) => void;
   total: number;
-}
+};
 
 const CartContainer = styled.div<{ isOpen: boolean }>`
   position: fixed;
@@ -20,26 +20,10 @@ const CartContainer = styled.div<{ isOpen: boolean }>`
   height: 100vh; /* 100% da altura da janela do navegador */
   right: ${({ isOpen }) => (isOpen ? '0' : '-486px')}; /* Esconde a div fora da tela */
   width: 486px;
-  height: 100%;
+  height: 100vh;
   background-color: #0F52BA;
   transition: right 0.3s ease; /* Adiciona uma transição suave */
   box-shadow: -2px 0px 5px 0px rgba(0,0,0,0.5); /* Adiciona uma sombra */
-`;
-
-const SlideInAnimation = keyframes`
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-`;
-
-const CartButton = styled.button`
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1;
 `;
 
 const ButtonCar = styled.button`
@@ -51,8 +35,6 @@ const ButtonCar = styled.button`
   right: 65px;
   border-radius: 8px;
   background-color: #FFFFFF;
-  //justify-content: left;
-  //align-items: left;
   text-align: left;
   border: 0;
   font-size: 20px;
@@ -62,26 +44,25 @@ const ButtonCar = styled.button`
     background-color: #000000; /* Nova cor quando o mouse está sobre o botão */
     color: white;
   }
-`
+`;
+
 const CarIcon = styled.img`
   width: 19.01px;
   height: 18px;
-  //margin-top: px;
   margin-left: 15px;
   margin-right: 13px;
-`
+`;
 
 const TitleCar = styled.h1`
   flex-wrap: wrap;
   margin-top: 36px;
   margin-left: 36px;
   width: 180px;
-  font-family: 'Montserrat', sans-serif;
   font-size: 27px;
   font-weight: bold;
   text-align: left;
   color: white;
-`
+`;
 
 const ButtonCloseCar = styled.button`
   position: absolute;
@@ -92,43 +73,36 @@ const ButtonCloseCar = styled.button`
   background-color: black;
   border-radius: 50%;
   color: white;
-  padding: 10px;
-  text-align: center;
-  line-height: 1px;
+  padding-bottom: 3px;
+  line-height: 0px;
   border: 0;
   font-size: 28px;
-`
+`;
 
 const BackListCar = styled.div`
-  //position: fixed;
   width: 385px;
   height: 920px;
   margin-left: 36px;
   justify-content: right;
   margin: 40px;
-`
+`;
 
 const Total = styled.p`
   position: absolute;
-  //top: 1;
-  font-family: 'Montserrat', sans-serif;
   font-size: 28px;
   left: 20px;
   margin-left: 36px;
   font-weight: bold;
   color: white;
-`
+`;
 
 const Value = styled.p`
   position: absolute;
-  font-family: 'Montserrat', sans-serif;
   font-size: 28px;
   right: 50px;
   font-weight: bold;
   color: white;
-  //margin-right: 25px;
-  //bottom: 0;
-`
+`;
 
 const ButtonBuy = styled.button`
   position:  absolute;
@@ -144,17 +118,16 @@ const ButtonBuy = styled.button`
   font-size: 28px;
   height: 97px;
   font-weight: bold;
-`
+`;
 
 const ShoppingCart: React.FC<ShoppingCartProps> = ( {  isOpen, cartItems, toggleCart, removeFromCart, updateCartItemQuantity, total}) => {
-  //const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = React.useState(false);
 
   const handleToggleCart = () => {
     toggleCart();
   };
 
-  //const total = cartItems.reduce((acc, cartItems) => acc + (cartItems.price * cartItems.quantity), 0);
+  const totalQuantity = cartItems.reduce((acc, cartItem) => acc + (cartItem.quantity || 1), 0);
 
   return (
     <>
@@ -164,9 +137,8 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ( {  isOpen, cartItems, toggle
          onMouseLeave={() => setIsHovered(false)}
       >
         <CarIcon src={isHovered ? process.env.PUBLIC_URL + '/images/carWhite.png' : process.env.PUBLIC_URL + '/images/carBlack.png'}/>
-        <span>0</span>
+        <span style={{ fontWeight: 'bold' }}>{totalQuantity}</span>
       </ButtonCar>
-      {/* <CartButton onClick={toggleCart}>Carrinho</CartButton> */}
       <CartContainer isOpen={isOpen} >
         <TitleCar>Carrinho de compras</TitleCar>
         <ButtonCloseCar onClick={handleToggleCart} ><span>X</span></ButtonCloseCar>
@@ -176,7 +148,6 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ( {  isOpen, cartItems, toggle
         <Total>Total:</Total>
         <Value>R${total}</Value>
         <ButtonBuy onClick={handleToggleCart} >Finalizar Compra</ButtonBuy>
-        {/* Conteúdo do carrinho aqui */}
       </CartContainer>
     </>
   );
