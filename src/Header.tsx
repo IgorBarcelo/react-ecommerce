@@ -40,14 +40,14 @@ const SubHeaderText = styled.h2`
 const Header: React.FC<HeaderProps> = ({ toggleCart, cartItems }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const toggleCartHandler = () => {
-    setIsCartOpen(!isCartOpen);
-  };
+  // const toggleCartHandler = () => {
+  //   setIsCartOpen(!isCartOpen);
+  // };
 
   return (
     <HeaderWrapper>
       <HeaderText>MKS <SubHeaderText>Sistemas</SubHeaderText></HeaderText>
-      <ShoppingCart  isOpen={isCartOpen} toggleCart={toggleCartHandler} cartItems={cartItems} />
+      {/* <ShoppingCart  isOpen={isCartOpen} toggleCart={toggleCart} cartItems={cartItems} /> */}
     </HeaderWrapper>
   );
 };

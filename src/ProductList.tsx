@@ -44,13 +44,13 @@ const CardContainer = styled(motion.div)`
     margin-top: 150px;
 `;
 
-const ProductList: React.FC = () => {
+const ProductList: React.FC <{ addToCart: (product: Product) => void }> = ({ addToCart }) => {
     const [products, setProducts] = useState<Product[]>([]);
-    const [cartItems, setCartItems] = useState<Product[]>([]); // Estado para armazenar os produtos no carrinho
+    //const [cartItems, setCartItems] = useState<Product[]>([]); // Estado para armazenar os produtos no carrinho
 
-    const addToCart = (product: Product) => {
-        setCartItems(prevItems => [...prevItems, product]); // Adiciona o produto ao carrinho
-    };
+    // const addToCart = (product: Product) => {
+    //     setCartItems(prevItems => [...prevItems, product]); // Adiciona o produto ao carrinho
+    // };
 
     useEffect(() => {
         const fetchData = async () => {

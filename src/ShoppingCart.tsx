@@ -7,6 +7,9 @@ interface ShoppingCartProps {
   isOpen: boolean;
   cartItems: Product[];
   toggleCart: () => void;
+  removeFromCart: (productId: number) => Product[];
+  updateCartItemQuantity: (productId: number, quantity: number) => void;
+  total: number;
 }
 
 const CartContainer = styled.div<{ isOpen: boolean }>`
@@ -40,11 +43,12 @@ const CartButton = styled.button`
 `;
 
 const ButtonCar = styled.button`
+  position: absolute;
   display: right;
   width: 90px;
   height: 45px;
-  margin-top: 29px;
-  margin-right: 65px;
+  top: 29px;
+  right: 65px;
   border-radius: 8px;
   background-color: #FFFFFF;
   //justify-content: left;
@@ -76,6 +80,7 @@ const TitleCar = styled.h1`
   font-size: 27px;
   font-weight: bold;
   text-align: left;
+  color: white;
 `
 
 const ButtonCloseCar = styled.button`
@@ -97,8 +102,10 @@ const ButtonCloseCar = styled.button`
 const BackListCar = styled.div`
   //position: fixed;
   width: 385px;
-  height: 1000px;
+  height: 920px;
   margin-left: 36px;
+  justify-content: right;
+  margin: 40px;
 `
 
 const Total = styled.p`
@@ -109,14 +116,16 @@ const Total = styled.p`
   left: 20px;
   margin-left: 36px;
   font-weight: bold;
+  color: white;
 `
 
 const Value = styled.p`
   position: absolute;
   font-family: 'Montserrat', sans-serif;
   font-size: 28px;
-  right: 25px;
+  right: 50px;
   font-weight: bold;
+  color: white;
   //margin-right: 25px;
   //bottom: 0;
 `
@@ -137,13 +146,15 @@ const ButtonBuy = styled.button`
   font-weight: bold;
 `
 
-const ShoppingCart: React.FC<ShoppingCartProps> = ( {  isOpen, cartItems, toggleCart}) => {
+const ShoppingCart: React.FC<ShoppingCartProps> = ( {  isOpen, cartItems, toggleCart, removeFromCart, updateCartItemQuantity, total}) => {
   //const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = React.useState(false);
 
   const handleToggleCart = () => {
     toggleCart();
   };
+
+  //const total = cartItems.reduce((acc, cartItems) => acc + (cartItems.price * cartItems.quantity), 0);
 
   return (
     <>
@@ -160,11 +171,10 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ( {  isOpen, cartItems, toggle
         <TitleCar>Carrinho de compras</TitleCar>
         <ButtonCloseCar onClick={handleToggleCart} ><span>X</span></ButtonCloseCar>
         <BackListCar>
-          Produtos
-          <ListCar items={cartItems} />
+          <ListCar items={cartItems} removeFromCart={removeFromCart} updateCartItemQuantity={updateCartItemQuantity} />
         </BackListCar>
         <Total>Total:</Total>
-        <Value>R$789</Value>
+        <Value>R${total}</Value>
         <ButtonBuy onClick={handleToggleCart} >Finalizar Compra</ButtonBuy>
         {/* Conteúdo do carrinho aqui */}
       </CartContainer>

@@ -3,12 +3,19 @@ import styled from "styled-components";
 import { Button, ButtonGroup } from 'react-bootstrap';
 import type { Product } from './types';
 
+interface ListCarProps {
+    items: Product[];
+    removeFromCart: (productId: number) => Product[];
+    updateCartItemQuantity: (productId: number, quantity: number) => void;
+}
+
 const Product = styled.div`
     display: flex;
     background-color: white;
     border-radius: 8px;
     height: 95px;
     width: 379px;
+    margin-top: 30px;
     //text-align: center;
 `
 
@@ -146,21 +153,27 @@ const Sp = styled.span`
     font-size: 10px;
     color: #BFBFBF;
 `
+interface QuantitySelectorProps {
+    productId: number; // Adicione uma propriedade para o id do produto
+    updateCartItemQuantity: (productId: number, quantity: number) => void; // Adicione uma propriedade para a função de atualização de quantidade
+}
 
 // Componente QuantitySelector
-const QuantitySelector: React.FC = () => {
+const QuantitySelector: React.FC<QuantitySelectorProps> = ({ productId, updateCartItemQuantity }) => {
   // Estado para controlar a quantidade
   const [quantity, setQuantity] = useState(1);
 
   // Função para aumentar a quantidade
   const increaseQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
+    updateCartItemQuantity(productId, quantity + 1); // Atualiza a quantidade no estado do carrinho
   };
 
   // Função para diminuir a quantidade
   const decreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);
+      updateCartItemQuantity(productId, quantity - 1); // Atualiza a quantidade no estado do carrinho
     }
   };
 
@@ -173,22 +186,19 @@ const QuantitySelector: React.FC = () => {
   );
 };
 
-interface ListCarProps {
-    items: Product[];
-}
 
-const ListCar: React.FC<ListCarProps> = ({ items }) => {
+const ListCar: React.FC<ListCarProps> = ({ items, removeFromCart, updateCartItemQuantity }) => {
     // const imagePath = `${process.env.PUBLIC_URL}/images/${item.productId}.jpg`;
     return(
         <>
             {items.map((item, index)=> (     
                 <Product key={index}>
-                    <DelProduct>X</DelProduct>
+                    <DelProduct onClick={() => removeFromCart(item.id)}>X</DelProduct>
                     <Image src={`${process.env.PUBLIC_URL}/images/${item.id}.jpg`}></Image>
                     <Descriopton>{item.name}</Descriopton>
                     <Qtd>Qtd:</Qtd>
-                    <QuantitySelector />
-                    <Price>R${item.price}</Price>
+                    <QuantitySelector productId={item.id} updateCartItemQuantity={updateCartItemQuantity}/>
+                    <Price>R${item.price * (item.quantity > 0 ? item.quantity : 1)}</Price>
                 </Product>
             ))}
         </>
