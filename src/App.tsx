@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState }  from 'react';
 import './App.css';
+import Header from './Header';
+import ProductList from './ProductList';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import Baseboard from './Baseboard';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ShoppingCart from './ShoppingCart';
 
-function App() {
+const queryClient = new QueryClient();
+
+const App: React.FC = () => {
+
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]); // Supondo que você tenha uma lista de itens no carrinho
+
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <Header toggleCart={toggleCart} cartItems={cartItems} />
+        {/* <ShoppingCart isOpen={isCartOpen} cartItems={cartItems} toggleCart={toggleCart} /> */}
+        <ProductList />
+        <Baseboard />
+      </div>
+    </QueryClientProvider>
   );
-}
+};
 
 export default App;
