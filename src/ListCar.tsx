@@ -9,7 +9,7 @@ interface ListCarProps {
     updateCartItemQuantity: (productId: number, quantity: number) => void;
 };
 
-const Product = styled.div`
+const Prod = styled.div`
     display: flex;
     background-color: white;
     border-radius: 8px;
@@ -218,14 +218,14 @@ const ListCar: React.FC<ListCarProps> = ({ items, removeFromCart, updateCartItem
     return(
         <>
             {items.map((item, index)=> (     
-                <Product key={index}>
+                <Prod key={index}>
                     <DelProduct onClick={() => removeFromCart(item.id)}>X</DelProduct>
                     <Image src={`${process.env.PUBLIC_URL}/images/${item.id}.jpg`}></Image>
                     <Descriopton>{item.name}</Descriopton>
                     <Qtd>Qtd:</Qtd>
                     <QuantitySelector productId={item.id} updateCartItemQuantity={updateCartItemQuantity} />
                     <Price>R${item.price * (item.quantity > 0 ? item.quantity : 1)}</Price>
-                </Product>
+                </Prod>
             ))}
         </>
     )
