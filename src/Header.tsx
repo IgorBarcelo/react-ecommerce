@@ -28,10 +28,11 @@ const HeaderText = styled.h1`
   }
 `;
 
-const SubHeaderText = styled.h2`
+const SubHeaderText = styled.p`
   font-size: 18px; 
   margin-top: 19px;
   padding-left: 8px;
+  font-weight: lighter;
 
   @media only screen and (max-width: 768px) {
     font-size: 19px;

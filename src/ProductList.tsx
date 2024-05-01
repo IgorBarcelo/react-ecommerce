@@ -31,7 +31,6 @@ const Back = styled.div`
 const CardContainer = styled(motion.div)`
     display: flex; 
     flex-wrap: wrap; 
-    justify-content: space-between;
     margin-left: 20%;
     margin-right: 20%;
     padding-top: 150px;

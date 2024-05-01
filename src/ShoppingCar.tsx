@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyleSheetManager } from 'styled-components';
 import ListCar from './ListCar';
 import type { Product } from './types';
 
@@ -193,16 +193,18 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ( {  isOpen, cartItems, toggle
         <CarIcon src={isHovered ? process.env.PUBLIC_URL + '/images/carWhite.png' : process.env.PUBLIC_URL + '/images/carBlack.png'}/>
         <Qt>{totalQuantity}</Qt>
       </ButtonCar>
-      <CartContainer isOpen={isOpen} >
-        <TitleCar>Carrinho de compras</TitleCar>
-        <ButtonCloseCar onClick={handleToggleCar} ><span>X</span></ButtonCloseCar>
-        <BackListCar>
-          <ListCar items={cartItems} removeFromCart={removeFromCart} updateCartItemQuantity={updateCartItemQuantity} />
-        </BackListCar>
-        <Total>Total:</Total>
-        <Value>R${total}</Value>
-        <ButtonBuy onClick={handleToggleCar} >Finalizar Compra</ButtonBuy>
-      </CartContainer>
+      <StyleSheetManager shouldForwardProp={(prop) => prop !== 'isOpen'}>
+        <CartContainer isOpen={isOpen} >
+          <TitleCar>Carrinho de compras</TitleCar>
+          <ButtonCloseCar onClick={handleToggleCar} ><span>X</span></ButtonCloseCar>
+          <BackListCar>
+            <ListCar items={cartItems} removeFromCart={removeFromCart} updateCartItemQuantity={updateCartItemQuantity} />
+          </BackListCar>
+          <Total>Total:</Total>
+          <Value>R${total}</Value>
+          <ButtonBuy onClick={handleToggleCar} >Finalizar Compra</ButtonBuy>
+        </CartContainer>
+      </StyleSheetManager>
     </>
   );
 };

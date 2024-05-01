@@ -216,7 +216,7 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({ productId, updateCa
 
 
 const ListCar: React.FC<ListCarProps> = ({ items, removeFromCart, updateCartItemQuantity }) => {
-
+    
     return(
         <>
             {items.map((item, index)=> (     
@@ -226,7 +226,7 @@ const ListCar: React.FC<ListCarProps> = ({ items, removeFromCart, updateCartItem
                     <Descriopton>{item.name}</Descriopton>
                     <Qtd>Qtd:</Qtd>
                     <QuantitySelector productId={item.id} updateCartItemQuantity={updateCartItemQuantity} />
-                    <Price>R${item.price * (item.quantity > 0 ? item.quantity : 1)}</Price>
+                    <Price>R${parseInt(item.price.toString()).toFixed(0)}</Price>
                 </Prod>
             ))}
         </>

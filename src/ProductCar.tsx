@@ -16,6 +16,8 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between; 
+  margin-right: 20px;
+  margin-bottom: 30px;
   background-color: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
@@ -31,11 +33,12 @@ const ProductImage = styled.img`
   border-radius: 8px;
   margin-left: 25%;
   padding: 5%;
+  object-fit: contain;
 
   @media only screen and (max-width: 768px) {
     width: 127px;
     height: 158px;
-    margin-left: 20%;
+    margin-left: 22%;
   }
 `;
 
@@ -113,7 +116,7 @@ const CartIcon = styled.img`
 
 const ProductCard: React.FC<ProductCardProps> = ({ addToCart, product }) => {
   const imagePath = `${process.env.PUBLIC_URL}/images/${product.id}.jpg`; // Caminho da imagem baseado no ID do produto
-  const formattedPrice = parseInt(product.price.toString()).toLocaleString('pt-BR'); //Formatando preço para exibir sem os centavos
+  const formattedPrice = parseInt(product.price.toString()).toFixed(0); //Formatando preço para exibir sem os centavos
   const maxLength = 80; //Quantida de caracteres da descrição para limitar dentro da Div
   const shortenedDescription = product.description.length > maxLength ? `${product.description.substring(0, maxLength)}...` : product.description;//Variavel que lê e armazena a descrição com o limite da maxLength
 
