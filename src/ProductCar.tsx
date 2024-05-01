@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product } from './types'; // Se necessário, defina o tipo Product
+import { Product } from './types';
 import styled from 'styled-components';
 
 interface ProductCardProps {
@@ -15,7 +15,7 @@ const Card = styled.div`
   height: 285px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Alinha os elementos verticalmente */
+  justify-content: space-between; 
   background-color: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
@@ -61,7 +61,7 @@ const Price = styled.span`
   background-color: #373737;
   padding: 4px 8px;
   border-radius: 5px;
-  align-self: flex-end; /* Alinha o preço à direita */
+  align-self: flex-end; 
 
   @media only screen and (max-width: 768px) {
     margin-top: 165px;
@@ -95,9 +95,9 @@ const Buy = styled.button`
   align-items: center;
   font-family: 'Montserrat';
 
-  /* Estilo quando o mouse está sobre o botão */
+  
   &:hover {
-    background-color: #0ba56a; /* Nova cor quando o mouse está sobre o botão */
+    background-color: #0ba56a; 
   }
 
   @media only screen and (max-width: 768px) {
@@ -108,14 +108,14 @@ const Buy = styled.button`
 const CartIcon = styled.img`
   width: 20px;
   height: 20px;
-  margin-right: 8px; /* Adiciona um espaço entre o ícone e o texto */
+  margin-right: 8px; 
 `;
 
 const ProductCard: React.FC<ProductCardProps> = ({ addToCart, product }) => {
   const imagePath = `${process.env.PUBLIC_URL}/images/${product.id}.jpg`; // Caminho da imagem baseado no ID do produto
-  const formattedPrice = parseInt(product.price.toString()).toLocaleString('pt-BR');
-  const maxLength = 80;
-  const shortenedDescription = product.description.length > maxLength ? `${product.description.substring(0, maxLength)}...` : product.description;
+  const formattedPrice = parseInt(product.price.toString()).toLocaleString('pt-BR'); //Formatando preço para exibir sem os centavos
+  const maxLength = 80; //Quantida de caracteres da descrição para limitar dentro da Div
+  const shortenedDescription = product.description.length > maxLength ? `${product.description.substring(0, maxLength)}...` : product.description;//Variavel que lê e armazena a descrição com o limite da maxLength
 
   return (
     <Card>

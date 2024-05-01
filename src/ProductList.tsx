@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-
+//Chamada a API para listar produtos
 const fetchProducts = async () => {
     const response = await fetch('https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC');
     if (!response.ok) {
@@ -15,11 +15,12 @@ const fetchProducts = async () => {
     return productsResponse.products;
 };
 
+//Tamanho do header
 const HeaderHeight = 101;
 
 const Back = styled.div`
     background-color: #f5f5f5;
-    height: calc(100vh - ${HeaderHeight}px);
+    height: calc(100vh - ${HeaderHeight}px);//calculando tamanho da div subtraindo o tamanho do Header
 
     @media only screen and (max-width: 768px) {
         height: 100%;
@@ -28,8 +29,8 @@ const Back = styled.div`
 `;
 
 const CardContainer = styled(motion.div)`
-    display: flex; /* Torna os cards flexíveis */
-    flex-wrap: wrap; /* Permite que os cards quebrem linha se necessário */
+    display: flex; 
+    flex-wrap: wrap; 
     justify-content: space-between;
     margin-left: 20%;
     margin-right: 20%;

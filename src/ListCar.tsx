@@ -130,9 +130,9 @@ const Price = styled.p`
 const Btn = styled.button`
     background-color: transparent;
     color: black;
-    border: none; /* Adicionei uma borda sólida */
-    width: 15px; /* Ajuste o tamanho do botão conforme necessário */
-    height: 10px; /* Ajuste o tamanho do botão conforme necessário */
+    border: none; 
+    width: 15px; 
+    height: 10px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -180,8 +180,8 @@ const Sp = styled.span`
 `;
 
 interface QuantitySelectorProps {
-    productId: number; // Adicione uma propriedade para o id do produto
-    updateCartItemQuantity: (productId: number, quantity: number) => void; // Adicione uma propriedade para a função de atualização de quantidade
+    productId: number; 
+    updateCartItemQuantity: (productId: number, quantity: number) => void;
 };
 
 // Componente QuantitySelector
@@ -189,12 +189,14 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({ productId, updateCa
   // Estado para controlar a quantidade
   const [quantity, setQuantity] = useState(1);
 
+  //Inclementa +1 a quantidade do item
   const increaseQuantity = () => {
     const newQuantity = quantity + 1;
     setQuantity(newQuantity);
     updateCartItemQuantity(productId, newQuantity);
   };
 
+  //Subtrai -1 do item
   const decreaseQuantity = () => {
     if (quantity > 1) {
       const newQuantity = quantity - 1;

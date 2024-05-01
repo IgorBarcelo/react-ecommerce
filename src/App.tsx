@@ -13,7 +13,7 @@ const queryClient = new QueryClient();
 const App: React.FC = () => {
 
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<Product[]>([]); // Supondo que você tenha uma lista de itens no carrinho
+  const [cartItems, setCartItems] = useState<Product[]>([]); 
 
   const toggleCar = () => {
     setIsCartOpen(!isCartOpen);
@@ -24,16 +24,11 @@ const App: React.FC = () => {
     const existingItemIndex = cartItems.findIndex(item => item.id === product.id);
   
     if (existingItemIndex !== -1) {
-      // Se o produto já está no carrinho, aumenta a quantidade
-      const updatedCartItems = [...cartItems];
-      updatedCartItems[existingItemIndex].quantity += 1; // Incrementa a quantidade
-      setCartItems(updatedCartItems);
+      // Futura implementação para adicionar mais um do mesmo item
     } else {
       // Se o produto não está no carrinho, adiciona como um novo item
       setCartItems(prevItems => [...prevItems, { ...product, quantity: 1 }]);
     }
-  // Atualiza a quantidade após adicionar ao carrinho
-  //updateCartItemQuantity(product.id, product.quantity + 1);
   };
 
   const removeFromCart = (productId: number): Product[] => {

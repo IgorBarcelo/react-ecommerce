@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-// Estilos para o cabeçalho
 const HeaderWrapper = styled.header`
-  background-color: #0F52BA; /* Cor de fundo do cabeçalho */
-  color: #FFFFFF; /* Cor do texto do cabeçalho */
+  background-color: #0F52BA; 
+  color: #FFFFFF; 
   width: flex;
   height: 101px;
   display: flex;
@@ -15,10 +14,10 @@ const HeaderWrapper = styled.header`
 `;
 
 const HeaderText = styled.h1`
-  font-size: 40px; /* Tamanho da fonte do título */
+  font-size: 40px; 
   margin-top: 28px;
-  margin-left: 65px; /* Remover margens padrão */
-  text-align: left; /* Alinhamento do texto no centro */
+  margin-left: 65px; 
+  text-align: left; 
   display: flex;
   font-weight: bold;
 
@@ -30,7 +29,7 @@ const HeaderText = styled.h1`
 `;
 
 const SubHeaderText = styled.h2`
-  font-size: 18px; /* Tamanho da fonte do subtítulo */
+  font-size: 18px; 
   margin-top: 19px;
   padding-left: 8px;
 
