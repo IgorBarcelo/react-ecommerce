@@ -5,7 +5,7 @@ import styled from 'styled-components';
 interface ProductCardProps {
   product: Product;
   addToCart: (product: Product) => void;
-}
+};
 
 const Card = styled.div`
   display: flex;
@@ -18,7 +18,11 @@ const Card = styled.div`
   justify-content: space-between; /* Alinha os elementos verticalmente */
   background-color: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  
+
+  @media only screen and (max-width: 768px) {
+    width: 250px;
+    height: 328px;
+  }
 `;
 
 const ProductImage = styled.img`
@@ -27,6 +31,12 @@ const ProductImage = styled.img`
   border-radius: 8px;
   margin-left: 25%;
   padding: 5%;
+
+  @media only screen and (max-width: 768px) {
+    width: 127px;
+    height: 158px;
+    margin-left: 20%;
+  }
 `;
 
 const Title = styled.h1`
@@ -36,6 +46,10 @@ const Title = styled.h1`
   padding-left: 15px;
   font-size: 16px;
   text-align: left;
+
+  @media only screen and (max-width: 768px) {
+    margin-top: 165px;
+  }
 `;
 
 const Price = styled.span`
@@ -48,6 +62,10 @@ const Price = styled.span`
   padding: 4px 8px;
   border-radius: 5px;
   align-self: flex-end; /* Alinha o preço à direita */
+
+  @media only screen and (max-width: 768px) {
+    margin-top: 165px;
+  }
 `;
 
 const ProductDescription = styled.p`
@@ -57,6 +75,10 @@ const ProductDescription = styled.p`
   text-align: left;
   padding-left: 15px;
   margin-top: 205px;
+
+  @media only screen and (max-width: 768px) {
+    margin-top: 225px;
+  }
 `;
 
 const Buy = styled.button`
@@ -71,10 +93,15 @@ const Buy = styled.button`
   color: #FFFFFF;
   justify-content: center;
   align-items: center;
+  font-family: 'Montserrat';
 
   /* Estilo quando o mouse está sobre o botão */
   &:hover {
     background-color: #0ba56a; /* Nova cor quando o mouse está sobre o botão */
+  }
+
+  @media only screen and (max-width: 768px) {
+    height: 36px;
   }
 `;
 

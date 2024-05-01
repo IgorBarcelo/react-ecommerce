@@ -15,11 +15,17 @@ const fetchProducts = async () => {
     return productsResponse.products;
 };
 
+const HeaderHeight = 101;
+
 const Back = styled.div`
     background-color: #f5f5f5;
-    height: 100vh;
-    position: fixed;
-`
+    height: calc(100vh - ${HeaderHeight}px);
+
+    @media only screen and (max-width: 768px) {
+        height: 100%;
+        padding-bottom: 70px;
+    }
+`;
 
 const CardContainer = styled(motion.div)`
     display: flex; /* Torna os cards flexíveis */
@@ -27,7 +33,13 @@ const CardContainer = styled(motion.div)`
     justify-content: space-between;
     margin-left: 20%;
     margin-right: 20%;
-    margin-top: 150px;
+    padding-top: 150px;
+
+    @media only screen and (max-width: 768px) {
+        margin-left: 62px;
+        margin-right: 62px;
+        padding-top: 18px;
+    }
 `;
 
 const ProductList: React.FC <{ addToCart: (product: Product) => void }> = ({ addToCart }) => {

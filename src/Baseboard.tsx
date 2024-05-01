@@ -15,6 +15,6 @@ const Baseboard: React.FC = () => {
     return (
         <About>MKS sistemas © Todos os direitos reservados</About>
     );
-}
+};
 
 export default Baseboard;

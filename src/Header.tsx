@@ -8,6 +8,10 @@ const HeaderWrapper = styled.header`
   height: 101px;
   display: flex;
   justify-content: space-between;
+
+  @media only screen and (max-width: 768px) {
+    height: 48px;
+  }
 `;
 
 const HeaderText = styled.h1`
@@ -17,12 +21,23 @@ const HeaderText = styled.h1`
   text-align: left; /* Alinhamento do texto no centro */
   display: flex;
   font-weight: bold;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 32px;
+    margin-top: 5px;
+    margin-left: 18px;
+  }
 `;
 
 const SubHeaderText = styled.h2`
   font-size: 18px; /* Tamanho da fonte do subtítulo */
   margin-top: 19px;
   padding-left: 8px;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 19px;
+    margin-top: 12px;
+  }
 `;
 
 const Header: React.FC = () => {
