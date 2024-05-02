@@ -222,7 +222,7 @@ const ListCar: React.FC<ListCarProps> = ({ items, removeFromCart, updateCartItem
             {items.map((item, index)=> (     
                 <Prod key={index}>
                     <DelProduct onClick={() => removeFromCart(item.id)}>X</DelProduct>
-                    <Image src={`${process.env.PUBLIC_URL}/images/${item.id}.jpg`}></Image>
+                    <Image src={item.photo}></Image>
                     <Descriopton>{item.name}</Descriopton>
                     <Qtd>Qtd:</Qtd>
                     <QuantitySelector productId={item.id} updateCartItemQuantity={updateCartItemQuantity} />

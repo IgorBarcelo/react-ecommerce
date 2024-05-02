@@ -115,14 +115,13 @@ const CartIcon = styled.img`
 `;
 
 const ProductCard: React.FC<ProductCardProps> = ({ addToCart, product }) => {
-  const imagePath = `${process.env.PUBLIC_URL}/images/${product.id}.jpg`; // Caminho da imagem baseado no ID do produto
   const formattedPrice = parseInt(product.price.toString()).toFixed(0); //Formatando preço para exibir sem os centavos
   const maxLength = 80; //Quantida de caracteres da descrição para limitar dentro da Div
   const shortenedDescription = product.description.length > maxLength ? `${product.description.substring(0, maxLength)}...` : product.description;//Variavel que lê e armazena a descrição com o limite da maxLength
 
   return (
     <Card>
-      <ProductImage src={imagePath} alt={product.name} />
+      <ProductImage src={product.photo} alt={product.name} />
       <Title>{product.name}</Title>
       <Price>R${formattedPrice}</Price>
       <ProductDescription>{shortenedDescription}</ProductDescription>
