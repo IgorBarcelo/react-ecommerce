@@ -5,7 +5,7 @@ Este é um projeto de aplicativo web de e-commerce construído com React. Ele pe
 
 ## Demonstrativo (vídeo)
 
-🎥 [![Assista ao vídeo da demo no LinkedIn](./plublic/demo.png)](https://www.linkedin.com/posts/igor-barcelo-631010216_estou-animado-em-compartilhar-meu-novo-projeto-activity-7194318166708105216-mtsH?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ2dIUBHlgJEC2FKQkSO200hlfncqexis4)
+🎥 [![Assista ao vídeo da demo no LinkedIn](public/demo.png)](https://www.linkedin.com/posts/igor-barcelo-631010216_estou-animado-em-compartilhar-meu-novo-projeto-activity-7194318166708105216-mtsH?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ2dIUBHlgJEC2FKQkSO200hlfncqexis4)
 
 
 
