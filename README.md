@@ -3,6 +3,12 @@
 ## Visão Geral
 Este é um projeto de aplicativo web de e-commerce construído com React. Ele permite que os usuários naveguem pelos produtos disponíveis, adicionem itens ao carrinho de compras, removam itens do carrinho e finalizem a compra.
 
+## Demonstrativo (vídeo)
+
+🎥 [![Assista ao vídeo da demo no LinkedIn](./plublic/demo.png)](https://www.linkedin.com/posts/igor-barcelo-631010216_estou-animado-em-compartilhar-meu-novo-projeto-activity-7194318166708105216-mtsH?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ2dIUBHlgJEC2FKQkSO200hlfncqexis4)
+
+
+
 ## Funcionalidades Principais
 - Visualização de Produtos: Os usuários podem visualizar uma lista de produtos disponíveis para compra.
 - Adição ao Carrinho: Os usuários podem adicionar itens ao carrinho de compras.
