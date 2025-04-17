@@ -17,9 +17,8 @@ Este é um projeto de e-commerce desenvolvido com React, que permite aos usuári
 
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [React Router](https://reactrouter.com/) (se aplicável)
 - [Styled Components](https://styled-components.com/) ou CSS Modules (dependendo da implementação)
-- [Axios](https://axios-http.com/) para requisições HTTP (se aplicável)
+- [Jest](https://jestjs.io/pt-BR/)
 
 ## 📦 Instalação
 
