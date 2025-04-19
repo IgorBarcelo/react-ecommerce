@@ -4,7 +4,7 @@ Este é um projeto de e-commerce desenvolvido com React, que permite aos usuári
 
 ## 📸 Demonstração
 
-![Demonstração do Projeto](/public/demo.png)
+![Demonstração do Projeto](https://github.com/IgorBarcelo/react-ecommerce/blob/main/public/demo.png?raw=true)
 
 ## 🚀 Funcionalidades
 
